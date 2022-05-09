@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/security  
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!-- assign role -->
+    <http auto-config='true'>
+        <intercept-url pattern="/postRegistration"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/createPostConfirm"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/savePost"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/postView"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/searchPost"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/editPost/{id}"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/deletePost/{id}"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/downloadPost"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/uploadPostChoose"
+            access="hasAnyRole('ADMIN','USER')" />
+        <intercept-url pattern="/uploadPost"
+            access="hasAnyRole('ADMIN','USER')" />
+
+        <intercept-url pattern="/passwordChange"
+            access="hasRole('USER')" />
+        <intercept-url pattern="/userPasswordChange"
+            access="hasRole('USER')" />
+        <intercept-url pattern="/userDetailProfile"
+            access="hasRole('USER')" />
+        <intercept-url pattern="/userRegistration"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/createUserConfirm"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/saveUser"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/users"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/searchUsers"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/editUser/{id}"
+            access="hasRole('ADMIN')" />
+        <intercept-url pattern="/deleteUser/{id}"
+            access="hasRole('ADMIN')" />
+
+        <form-login login-page="/login"
+            login-processing-url="/login" username-parameter="userEmail"
+            password-parameter="userPassword"
+            authentication-success-handler-ref="successHandler" />
+        <logout logout-url="/logout" logout-success-url="/login" />
+        <access-denied-handler error-page="/error" />
+        <csrf disabled="true" />
+    </http>
+
+    <!-- password encrypt -->
+    <authentication-manager>
+        <authentication-provider
+            user-service-ref="userService">
+            <password-encoder
+                ref="bCryptPasswordEncoder" />
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>  

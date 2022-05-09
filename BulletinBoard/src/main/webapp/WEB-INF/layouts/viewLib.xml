@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="login" extends="tiles">
+        <put-attribute name="title" value="Login Page" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/login.jsp" />
+    </definition>
+    <definition name="index" extends="tiles">
+        <put-attribute name="title" value="Index Page" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/index.jsp" />
+    </definition>
+    <definition name="error" extends="tiles">
+        <put-attribute name="title" value="Access Denied" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/users/error.jsp" />
+    </definition>
+    <definition name="userRegistration" extends="tiles">
+        <put-attribute name="title"
+            value="User Registraion" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/users/userRegistration.jsp" />
+    </definition>
+    <definition name="userView" extends="tiles">
+        <put-attribute name="title" value="User View" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/users/userView.jsp" />
+    </definition>
+    <definition name="userConfirm" extends="tiles">
+        <put-attribute name="title" value="User Confirm" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/users/userConfirm.jsp" />
+    </definition>
+    <definition name="passwordChange" extends="tiles">
+        <put-attribute name="title"
+            value="Password Change" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/users/passwordChange.jsp" />
+    </definition>
+    <definition name="userProfile" extends="tiles">
+        <put-attribute name="title" value="User Profile" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/users/userProfile.jsp" />
+    </definition>
+    <definition name="postRegistration" extends="tiles">
+        <put-attribute name="title"
+            value="Post Registration" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/post/postRegistration.jsp" />
+    </definition>
+    <definition name="postView" extends="tiles">
+        <put-attribute name="title" value="Post Lists" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/post/postView.jsp" />
+    </definition>
+    <definition name="postConfirm" extends="tiles">
+        <put-attribute name="title" value="Post Confirm" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/post/postConfirm.jsp" />
+    </definition>
+    <definition name="postUpload" extends="tiles">
+        <put-attribute name="title" value="Post Upload" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/post/postUpload.jsp" />
+    </definition>
+</tiles-definitions>
