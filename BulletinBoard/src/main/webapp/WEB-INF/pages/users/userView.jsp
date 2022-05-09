@@ -1,6 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:if test="${not empty msg}">
+  <span class="msg"> ${msg}</span>
+  <c:remove var="msg" />
+</c:if>
 <form:form action="${pageContext.request.contextPath}/searchUsers"
   modelAttribute="searchForm" method="POST">
   <div class="clearfix mt-5">

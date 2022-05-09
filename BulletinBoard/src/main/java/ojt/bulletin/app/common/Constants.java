@@ -45,4 +45,18 @@ public class Constants {
      * </p>
      */
     public static final String DATE_FORMAT = "dd/mm/yyyy hh:mm:ss";
+    /**
+     * <h2>ADMIN</h2>
+     * <p>
+     * ADMIN
+     * </p>
+     */
+    public static final String ADMIN = "ROLE_ADMIN";
+    /**
+     * <h2>USER</h2>
+     * <p>
+     * USER
+     * </p>
+     */
+    public static final String USER = "ROLE_USER";
 }

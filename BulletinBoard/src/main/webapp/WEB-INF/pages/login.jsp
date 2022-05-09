@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-5 mt-3">
+    <div class="col-md-6 mt-3">
       <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message }">
         <span class="msg2">${msg}Incorrect Email or Password!</span>
       </c:if>

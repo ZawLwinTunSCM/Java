@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import ojt.bulletin.app.common.Constants;
 import ojt.bulletin.app.persistence.dao.UsersDao;
 import ojt.bulletin.app.persistence.entity.Users;
 
@@ -63,7 +64,7 @@ public class DeploymentListener {
             admin.setUserEmail("admin@gmail.com");
             admin.setUserPassword(passwordEncoder.encode("123"));
             admin.setUserPhone("09123456789");
-            admin.setUserType("ROLE_ADMIN");
+            admin.setUserType(Constants.ADMIN);
             admin.setUserAddress("Yangon");
             admin.setUserDob(dob);
             admin.setCreatedUserId(1);

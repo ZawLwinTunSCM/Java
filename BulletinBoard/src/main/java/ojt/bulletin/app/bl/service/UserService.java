@@ -31,7 +31,7 @@ public interface UserService {
      * @throws IOException
      * @return void
      */
-    public void doSaveUser(UsersForm usersForm, String userProfilePath, String imgName) throws IOException;
+    public void doSaveUser(UsersForm usersForm) throws IOException;
 
     /**
      * <h2>doListUser</h2>

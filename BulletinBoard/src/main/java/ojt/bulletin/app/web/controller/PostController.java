@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ojt.bulletin.app.bl.dto.PostDTO;
 import ojt.bulletin.app.bl.service.PostService;
 import ojt.bulletin.app.web.form.PostForm;
 
@@ -32,11 +33,6 @@ import ojt.bulletin.app.web.form.PostForm;
  */
 @Controller
 public class PostController {
-    @RequestMapping("/index")
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("index");
-        return mv;
-    }
 
     /**
      * <h2>postService</h2>
@@ -62,6 +58,20 @@ public class PostController {
      */
     @Autowired
     private HttpSession session;
+
+    /**
+     * <h2>index</h2>
+     * <p>
+     * Index Page
+     * </p>
+     *
+     * @return ModelAndView
+     */
+    @RequestMapping("/index")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("index");
+        return mv;
+    }
 
     /**
      * <h2>postRegistration</h2>
@@ -114,10 +124,10 @@ public class PostController {
         ModelAndView mv = new ModelAndView("redirect:/postView");
         if (postForm.getPostId() == null || postForm.getPostId() == 0) {
             postService.doSavePost(postForm);
-            session.setAttribute("msg", messageSource.getMessage("M_SC_0005", null, null));
+            session.setAttribute("msg", messageSource.getMessage("M_SC_0009", null, null));
         } else {
             postService.doUpdatePost(postForm);
-            session.setAttribute("msg", messageSource.getMessage("M_SC_0006", null, null));
+            session.setAttribute("msg", messageSource.getMessage("M_SC_0010", null, null));
         }
         return mv;
     }
@@ -149,8 +159,9 @@ public class PostController {
     @RequestMapping(value = "/searchPost", method = RequestMethod.POST)
     public ModelAndView searchPost(@RequestParam("search") String search) {
         ModelAndView mv = new ModelAndView("postView");
-        mv.addObject("postList", postService.doSearchPost(search));
-        mv.addObject("msg", postService.doSearchPost(search).size() + " Results Found");
+        java.util.List<PostDTO> postList = postService.doSearchPost(search);
+        mv.addObject("postList", postList);
+        mv.addObject("msg", postList.size() + " Results Found");
         return mv;
     }
 
@@ -166,8 +177,9 @@ public class PostController {
     @RequestMapping("/editPost/{id}")
     public ModelAndView editPost(@PathVariable("id") int id) {
         ModelAndView mv = new ModelAndView("postRegistration");
-        mv.addObject("postForm", postService.doGetPostById(id));
-        mv.addObject("createdUserId", postService.doGetPostById(id).getUser().getUserId());
+        PostDTO post = postService.doGetPostById(id);
+        mv.addObject("postForm", post);
+        mv.addObject("createdUserId", post.getUser().getUserId());
         return mv;
     }
 
@@ -184,7 +196,7 @@ public class PostController {
     public ModelAndView deletePost(@PathVariable("id") int id) {
         ModelAndView mv = new ModelAndView("redirect:/postView");
         postService.doDeletePost(id);
-        session.setAttribute("msg", messageSource.getMessage("M_SC_0007", null, null));
+        session.setAttribute("msg", messageSource.getMessage("M_SC_0011", null, null));
         return mv;
     }
 

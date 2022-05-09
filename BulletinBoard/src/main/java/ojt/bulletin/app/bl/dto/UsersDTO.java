@@ -122,6 +122,14 @@ public class UsersDTO {
      */
     private Date updatedAt;
 
+    /**
+     * <h2>Constructor for UsersDTO</h2>
+     * <p>
+     * Constructor for UsersDTO
+     * </p>
+     * 
+     * @param users
+     */
     public UsersDTO(Users users) {
         super();
         this.userId = users.getUserId();
